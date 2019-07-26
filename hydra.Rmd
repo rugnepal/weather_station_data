@@ -1,0 +1,12 @@
+---
+title: "Hydrology"
+output: html_notebook
+---
+## Bagmati
+
+```{r}
+## load library and data
+library(tidyverse)
+bag_data <- read_csv("data/bagmati_sundarijal.csv")
+```
+
