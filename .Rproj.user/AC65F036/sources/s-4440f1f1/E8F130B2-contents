@@ -1,10 +1,16 @@
 library("tidyverse")
+library("highcharter")
+library("lubridate")
 
 
 bagmati <- read_csv("bagmati_sundarijal.csv")
 
+ggplot(bagmati, aes(x = datetime_UTC, y = waterLevel)) +
+  geom_point()
 
+ggplot(bagmati, aes(x = datetime_UTC, y = waterLevel)) +
+  geom_bar(stat='identity')
 
+time <- bagmati %>% select()
 
-
-
+hchart(bagmati)
