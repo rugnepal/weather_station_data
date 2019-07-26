@@ -55,7 +55,7 @@ table(bag_data$waterLevel >3.5)
 ```
 
 ```{r}
-hchart(bag_data,"spline",hcaes(x = datetime_to_timestamp(localDateTime), y = waterLevel, color = risk_level),name = "Heil Hydara")  %>% hc_xAxis(title ="",type = 'datetime') %>% hc_title(text = "Timeseries of Bagmati")
+hchart(bag_data,"spline",hcaes(x = datetime_to_timestamp(localDateTime), y = waterLevel, group = risk_level),name = "Bagmati")  %>% hc_xAxis(title ="",type = 'datetime') %>% hc_title(text = "Timeseries of Bagmati")
 ```
 
 ```{r}
@@ -64,20 +64,44 @@ bak_data$localDateTime <- ymd_hms(bak_data$localDateTime)
 
 
 ```{r}
-hchart(aru_data,"spline",hcaes(x = datetime_to_timestamp(localDateTime), y = waterLevel, color = risk_level),name = "Arun Khola")  %>% hc_xAxis(title = "",type = 'datetime') %>% hc_title(text = "Timeseries of Arun Khola")
+hchart(aru_data,"spline",hcaes(x = datetime_to_timestamp(localDateTime), y = waterLevel, group = risk_level),name = "Arun Khola")  %>% hc_xAxis(title = "",type = 'datetime') %>% hc_title(text = "Timeseries of Arun Khola")
 ```
 
 
 ```{r}
-hchart(sap_data,"spline",hcaes(x = datetime_to_timestamp(localDateTime), y = waterLevel,  color = risk_level),name = "Sapta Khosi")  %>% hc_xAxis(title="",type = 'datetime') %>% hc_title(text = "Timeseries of  Sapta Khosi")
+hchart(sap_data,"spline",hcaes(x = datetime_to_timestamp(localDateTime), y = waterLevel,group= risk_level),name = "Sapta Khosi")  %>% hc_xAxis(title="",type = 'datetime') %>% hc_title(text = "Timeseries of  Sapta Khosi")
 ```
 
 ```{r}
-hchart(tam_data,"spline",hcaes(x = datetime_to_timestamp(localDateTime), y = waterLevel),name = "Tamor Khola")  %>% hc_xAxis(title="",type = 'datetime') %>% hc_title(text = "Timeseries of  Tamor")
+ggplot(data = sap_data) + geom_line(aes(x = localDateTime,y=waterLevel,color = risk_level))
+```
+
+```{r}
+hchart(tam_data,"spline",hcaes(x = datetime_to_timestamp(localDateTime), y = waterLevel,color = risk_level),name = "Tamor Khola")  %>% hc_xAxis(title="",type = 'datetime') %>% hc_title(text = "Timeseries of  Tamor")
 ```
 
 ```{r}
 highchart() %>%
   hc_add_series_list(series)
-```c
+```
+
+```{r}
+khola <- data_frame(
+  name = c("Bagmati Khokana", "Sapatkoshi Chatra", "Arun simle"),
+  lat = c(	27.63222, 26.86666,  26.9233),
+  lon = c(85.29333, 87.15833, 87.1552),
+  z = c(1, 2, 3),
+  color = colorize(z)
+  )
+
+
+```
+
+
+```{r}
+hcmap("countries/np/np-all", showInLegend = FALSE) %>% 
+  hc_add_series(data = khola, type = "mapbubble", name = "khola", maxSize = '10%') %>% 
+  hc_mapNavigation(enabled = TRUE) 
+```
+
 
