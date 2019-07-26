@@ -1,0 +1,33 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1564120070034.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "584E97C8",
+    "lastKnownWriteTime" : 429496729705,
+    "last_content_update" : 1564120070034,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "56783A34",
+        "caption" : "bagmati",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=bagmati&cache_key=56783A34",
+        "displayedObservations" : 217,
+        "environment" : "",
+        "expression" : "bagmati",
+        "object" : "bagmati",
+        "preview" : 0,
+        "totalObservations" : 217,
+        "variables" : 10
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}
