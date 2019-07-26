@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1564124501541.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1841929666",
+    "id" : "D041FE08",
+    "lastKnownWriteTime" : 1563957042,
+    "last_content_update" : 1563957042,
+    "path" : "~/Desktop/data_science/Courses/R/Projects/dash/helicrash/helicrash.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

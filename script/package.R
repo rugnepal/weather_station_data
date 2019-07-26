@@ -1,0 +1,10 @@
+### load library
+library(leaflet)
+library(dplyr)
+library(geojsonio)
+library(tigris)
+library(readr)
+library(RColorBrewer)
+library(highcharter)
+library(flexdashboard)
+library(tidyr)
