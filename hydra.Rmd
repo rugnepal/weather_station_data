@@ -4,9 +4,80 @@ output: html_notebook
 ---
 ## Bagmati
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 ## load library and data
 library(tidyverse)
-bag_data <- read_csv("data/bagmati_sundarijal.csv")
+library(highcharter)
+library(lubridate)
+bag_data <- read_csv("data/new/Bagmati at Khokana.csv")
+aru_data <- read_csv("data/new/Arun River at Simle (1).csv")
+sap_data <- read_csv("data/new/Sapta Koshi at Chatara (new).csv")
+#tam_data <- read_csv("data/Tamor River at Triveni.csv")
 ```
+
+```{r}
+## data manipulation
+bag_data <-mutate(bag_data,risk_level = case_when(
+    bag_data$waterLevel < 3.5 ~"low",
+    bag_data$waterLevel <4 ~ "alert",
+    bag_data$waterLevel >= 4 ~ "Danger"
+))
+```
+
+```{r}
+sap_data <- mutate(sap_data,risk_level = case_when(
+    sap_data$waterLevel < 6 ~"low",
+    sap_data$waterLevel <7 ~ "alert",
+    sap_data$waterLevel >= 7 ~ "Danger"
+))
+```
+
+
+```{r}
+aru_data<- mutate(aru_data,risk_level = case_when(
+    aru_data$waterLevel < 10 ~"low",
+    aru_data$waterLevel <11 ~ "alert",
+    aru_data$waterLevel >= 11 ~ "Danger"
+))
+```
+
+
+
+## Analysis
+
+
+## analysis of the risk level
+```{r}
+
+table(bag_data$risk_level)
+
+table(bag_data$waterLevel >3.5)
+```
+
+```{r}
+hchart(bag_data,"spline",hcaes(x = datetime_to_timestamp(localDateTime), y = waterLevel, color = risk_level),name = "Heil Hydara")  %>% hc_xAxis(title ="",type = 'datetime') %>% hc_title(text = "Timeseries of Bagmati")
+```
+
+```{r}
+bak_data$localDateTime <- ymd_hms(bak_data$localDateTime)
+```
+
+
+```{r}
+hchart(aru_data,"spline",hcaes(x = datetime_to_timestamp(localDateTime), y = waterLevel, color = risk_level),name = "Arun Khola")  %>% hc_xAxis(title = "",type = 'datetime') %>% hc_title(text = "Timeseries of Arun Khola")
+```
+
+
+```{r}
+hchart(sap_data,"spline",hcaes(x = datetime_to_timestamp(localDateTime), y = waterLevel,  color = risk_level),name = "Sapta Khosi")  %>% hc_xAxis(title="",type = 'datetime') %>% hc_title(text = "Timeseries of  Sapta Khosi")
+```
+
+```{r}
+hchart(tam_data,"spline",hcaes(x = datetime_to_timestamp(localDateTime), y = waterLevel),name = "Tamor Khola")  %>% hc_xAxis(title="",type = 'datetime') %>% hc_title(text = "Timeseries of  Tamor")
+```
+
+```{r}
+highchart() %>%
+  hc_add_series_list(series)
+```c
 
